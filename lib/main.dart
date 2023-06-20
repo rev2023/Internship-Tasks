@@ -1,4 +1,4 @@
-import 'package:counter_app/CounterProvider.dart';
+import 'package:counter_app/counter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blueGrey[800],
-          title: Center(
+          title: const Center(
             child: Text('Counter App'),
           ),
         ),
@@ -34,68 +34,68 @@ class CounterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = Provider.of<CounterViewModel>(context);
     final count = viewModel.count;
+    const double buttonHeight = 50;
+    const double  buttonWidth = 200;
 
-    return Container(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Number of times button clicked: ${viewModel.count}',
-              style: TextStyle(fontSize: 20, color: Colors.black),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Number of times button clicked: ${viewModel.count}',
+            style: const TextStyle(fontSize: 20, color: Colors.black),
+          ),
+          const SizedBox(height: 40),
+          MaterialButton( // Button for Incrementing
+            onPressed: () {
+              viewModel.increment();
+            },
+            height: buttonHeight,
+            minWidth: buttonWidth,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-            SizedBox(height: 40),
-            MaterialButton( // Button for Incrementing
-              onPressed: () {
-                viewModel.increment();
-              },
-              height: 50,
-              minWidth: 200,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Colors.blue,
-              child: Text(
-                'Increase ++',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
+            color: Colors.blue,
+            child: const Text(
+              'Increase ++',
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
-            SizedBox(
-              height: 20,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          MaterialButton( //Button for decrementing
+            onPressed: () {
+              viewModel.decrement();
+            },
+            height: 50,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-            MaterialButton( //Button for decrementing
-              onPressed: () {
-                viewModel.decrement();
-              },
-              height: 50,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              minWidth: 200,
-              color: Colors.blue,
-              child: Text(
-                'Decrease --',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
+            minWidth: 200,
+            color: Colors.blue,
+            child: const Text(
+              'Decrease --',
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
-            SizedBox(height: 20),
-            MaterialButton( // Button for resetting
-              onPressed: () {
-                viewModel.reset();
-              },
-              height: 50,
-              minWidth: 200,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Colors.blueGrey[600],
-              child: Text(
-                'Reset',
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
+          ),
+          const SizedBox(height: 20),
+          MaterialButton( // Button for resetting
+            onPressed: () {
+              viewModel.reset();
+            },
+            height: 50,
+            minWidth: 200,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
             ),
-          ],
-        ),
+            color: Colors.blueGrey[600],
+            child: const Text(
+              'Reset',
+              style: TextStyle(fontSize: 20, color: Colors.white),
+            ),
+          ),
+        ],
       ),
     );
   }
