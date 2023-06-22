@@ -31,21 +31,22 @@ class CounterViewModel extends ChangeNotifier{
   // Checks current value of count variable and sets the
   // other variables accordingly
   void checkValue(){
-    if(_count == 0){
-      isZero = true;
-      opacityOfButton = 1;
+    switch (_count) {
+      case 0:
+        isZero = true;
+        opacityOfButton = 1;
+        break;
+      case 15:
+        maxLimitReached = true;
+        isZero = false;
+        opacityOfButton = 0.3;
+        break;
+      default:
+        isZero = false;
+        maxLimitReached = false;
+        opacityOfButton = 1;
+        break;
     }
-    else if(_count == 15){
-      maxLimitReached = true;
-      isZero = false;
-      opacityOfButton = 0.3;
-    }
-    else{
-      isZero = false;
-      maxLimitReached = false;
-      opacityOfButton = 1;
-    }
-
   }
 
   // adjusting the count variables
