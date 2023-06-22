@@ -5,7 +5,7 @@ class CounterViewModel extends ChangeNotifier{
 
   int _count = 0;
   int get count => _count;
-  bool isZero = false;
+  bool isZero = true;
   bool maxLimitReached = false;
   double opacityOfButton = 1;
 
@@ -37,6 +37,7 @@ class CounterViewModel extends ChangeNotifier{
     }
     else if(_count == 15){
       maxLimitReached = true;
+      isZero = false;
       opacityOfButton = 0.3;
     }
     else{
@@ -50,7 +51,7 @@ class CounterViewModel extends ChangeNotifier{
   // adjusting the count variables
   // count can't go below 0
   void increment() {
-    if(count >= 0 && count < 15) {
+    if(count < 15) {
       _count = _count + 1;
       checkValue();
       notifyListeners();
