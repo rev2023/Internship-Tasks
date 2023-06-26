@@ -7,7 +7,7 @@ class CounterViewModel extends ChangeNotifier{
   int get count => _count;
   bool isZero = true;
   bool maxLimitReached = false;
-  double opacityOfButton = 1;
+
 
   //Constructor
   CounterViewModel() {
@@ -34,17 +34,14 @@ class CounterViewModel extends ChangeNotifier{
     switch (_count) {
       case 0:
         isZero = true;
-        opacityOfButton = 1;
         break;
       case 15:
         maxLimitReached = true;
         isZero = false;
-        opacityOfButton = 0.3;
         break;
       default:
         isZero = false;
         maxLimitReached = false;
-        opacityOfButton = 1;
         break;
     }
   }

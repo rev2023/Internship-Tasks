@@ -34,14 +34,13 @@ class CounterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = Provider.of<CounterViewModel>(context);
     final count = viewModel.count;
-    const double buttonHeight = 50;
-    const double buttonWidth = 200;
+
 
     //Instances of the counter button
     CounterButton increaseButton = CounterButton(
       onPressed: () {
         viewModel.increment();
-      },
+        },
       enableFeedback: !viewModel.maxLimitReached,
       color: Colors.blue,
       text: 'Increase ++',
@@ -81,7 +80,7 @@ class CounterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Opacity(
-              opacity: viewModel.opacityOfButton,
+              opacity: viewModel.maxLimitReached ? 0.3: 1,
               child: increaseButton,
             ),
             const SizedBox(
