@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:counter_app/Widgets/counter_button.dart';
 
+import 'Utils/app_colors.dart';
+
 void main() async {
   runApp(
     ChangeNotifierProvider(
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey[800],
+          backgroundColor: AppColors.primaryColor,
           title: const Center(
             child: Text('Counter App'),
           ),
@@ -42,7 +44,7 @@ class CounterScreen extends StatelessWidget {
         viewModel.increment();
         },
       enableFeedback: !viewModel.maxLimitReached,
-      color: Colors.blue,
+      color: AppColors.enabledButton,
       text: 'Increase ++',
     );
     CounterButton resetButton = CounterButton(
@@ -50,7 +52,7 @@ class CounterScreen extends StatelessWidget {
         viewModel.reset();
       },
       enableFeedback: !viewModel.maxLimitReached,
-      color: Colors.blueGrey,
+      color: AppColors.resetButton,
       text: 'Reset ++',
     );
     CounterButton decreaseButton = CounterButton(
@@ -65,7 +67,7 @@ class CounterScreen extends StatelessWidget {
         viewModel.decrement();
       },
       enableFeedback: true,
-      color: Colors.blue,
+      color: AppColors.enabledButton,
       text: 'Decrease --',
     );
 
@@ -76,7 +78,7 @@ class CounterScreen extends StatelessWidget {
           children: [
             Text(
               'Number of times button clicked: $count',
-              style: const TextStyle(fontSize: 20, color: Colors.black),
+              style: const TextStyle(fontSize: 20, color: AppColors.textColor),
             ),
             const SizedBox(height: 40),
             Opacity(

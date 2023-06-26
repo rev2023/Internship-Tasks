@@ -18,7 +18,8 @@ class CounterViewModel extends ChangeNotifier{
   // Called in the constructor
   void _loadCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _count = prefs.getInt('count') ?? 0;
+    _count = prefs.getInt('count')!;
+    checkValue();
     notifyListeners();
   }
 
@@ -34,14 +35,15 @@ class CounterViewModel extends ChangeNotifier{
     switch (_count) {
       case 0:
         isZero = true;
+        maxLimitReached = false;
         break;
       case 15:
         maxLimitReached = true;
         isZero = false;
         break;
       default:
-        isZero = false;
         maxLimitReached = false;
+        isZero = false;
         break;
     }
   }
