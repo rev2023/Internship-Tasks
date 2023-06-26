@@ -4,9 +4,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CounterViewModel extends ChangeNotifier{
 
   int _count = 0;
+  final int _maxLimit = 15;
   int get count => _count;
-  bool isZero = true;
-  bool maxLimitReached = false;
+  bool get isZero => (_count == 0);
+  bool get maxLimitReached => _count == _maxLimit;
 
 
   //Constructor
@@ -18,8 +19,7 @@ class CounterViewModel extends ChangeNotifier{
   // Called in the constructor
   void _loadCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _count = prefs.getInt('count')!;
-    checkValue();
+    _count = prefs.getInt('count') ?? 0;
     notifyListeners();
   }
 
@@ -29,31 +29,11 @@ class CounterViewModel extends ChangeNotifier{
     await prefs.setInt('count', _count);
   }
 
-  // Checks current value of count variable and sets the
-  // other variables accordingly
-  void checkValue(){
-    switch (_count) {
-      case 0:
-        isZero = true;
-        maxLimitReached = false;
-        break;
-      case 15:
-        maxLimitReached = true;
-        isZero = false;
-        break;
-      default:
-        maxLimitReached = false;
-        isZero = false;
-        break;
-    }
-  }
-
   // adjusting the count variables
   // count can't go below 0
   void increment() {
     if(count < 15) {
       _count = _count + 1;
-      checkValue();
       notifyListeners();
       _saveCount();
     }
@@ -62,18 +42,14 @@ class CounterViewModel extends ChangeNotifier{
   void decrement() {
     if(count > 0){
       _count = _count - 1;
-      checkValue();
       notifyListeners();
       _saveCount();
     }
 
   }
-
-  void reset(){
+  void reset() {
     _count = 0;
     notifyListeners();
-    checkValue();
   }
-
 }
 
