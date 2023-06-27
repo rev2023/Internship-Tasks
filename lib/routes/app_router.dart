@@ -9,6 +9,9 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
     AutoRoute(path: '/screens/home_screen.dart', page: HomeRoute.page, initial: true),
     AutoRoute(path: '/screens/appearance_screen.dart', page: AppearanceRoute.page),
+    AutoRoute(path: '/screens/about_screen.dart', page: AboutRoute.page),
+
+
 
   ];
 }

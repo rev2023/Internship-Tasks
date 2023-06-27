@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {
   bool _isDarkMode = false;
+
   bool get isDarkMode => _isDarkMode;
   ThemeMode _themeMode = ThemeMode.light;
+
   ThemeMode get themeMode => _themeMode;
 
   //constructor
@@ -23,14 +25,14 @@ class ThemeProvider with ChangeNotifier {
   //Method for reading current count into shared preferences
   void _saveTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('isDark', _isDarkMode );
-    _themeMode = _isDarkMode? ThemeMode.dark : ThemeMode.light;
+    await prefs.setBool('isDark', _isDarkMode);
+    _themeMode = _isDarkMode ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;
-    _themeMode = _isDarkMode? ThemeMode.dark : ThemeMode.light;
+    _themeMode = _isDarkMode ? ThemeMode.dark : ThemeMode.light;
     _saveTheme();
     notifyListeners();
   }

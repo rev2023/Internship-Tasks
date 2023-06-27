@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
               ListTile(
                 title: const Text('About'),
                 onTap: () {
-                  // Update the state of the app
+                  context.router.push(const AboutRoute());
                   // ...
                   // Then close the drawer
                   Navigator.pop(context);

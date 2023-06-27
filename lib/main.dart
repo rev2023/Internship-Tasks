@@ -5,9 +5,10 @@ import 'package:counter_app/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'about_provider.dart';
 
-void main() {
 
+  main(){
   runApp(
     MultiProvider(
 
@@ -18,6 +19,9 @@ void main() {
           ChangeNotifierProvider<ThemeProvider>(
           create: (context) => ThemeProvider(),
         ),
+        ChangeNotifierProvider<AboutProvider>(
+          create: (context) => AboutProvider(),
+        ),
 
       ],
       child: MyApp(),
@@ -26,7 +30,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
