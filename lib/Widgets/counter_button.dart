@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CounterButton extends StatelessWidget {
   final double height = 50;
@@ -7,14 +6,16 @@ class CounterButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool enableFeedback;
   final Color color;
-  String text;
+  final Color textColor;
+  final String text;
 
   //constructor
-  CounterButton({
+  const CounterButton({super.key,
     required this.onPressed,
     required this.enableFeedback,
     required this.color,
     required this.text,
+    required this.textColor,
   });
 
   @override
@@ -30,7 +31,7 @@ class CounterButton extends StatelessWidget {
       color: color,
       child: Text(
         text,
-        style: const TextStyle(fontSize: 20, color: Colors.white),
+        style: TextStyle(fontSize: 20, color: textColor,)
       ),
     );
   }
