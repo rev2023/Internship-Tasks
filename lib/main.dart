@@ -1,11 +1,11 @@
-import 'package:counter_app/counter_view_model.dart';
-import 'package:counter_app/theme_provider.dart';
+import 'package:counter_app/provider/counter_provider.dart';
+import 'package:counter_app/provider/theme_provider.dart';
 import 'package:counter_app/routes/app_router.dart';
 import 'package:counter_app/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'about_provider.dart';
+import 'provider/about_provider.dart';
 
 
   main(){

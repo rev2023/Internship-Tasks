@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:counter_app/counter_view_model.dart';
+import 'package:counter_app/provider/counter_provider.dart';
 import 'package:counter_app/routes/app_router.gr.dart';
+import 'package:counter_app/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:counter_app/widgets/counter_button.dart';
 import 'package:counter_app/utils/app_colors.dart';
+
+import '../widgets/reset_button.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -22,57 +25,12 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        drawer: Drawer(
-          // Add a ListView to the drawer. This ensures the user can scroll
-          // through the options in the drawer if there isn't enough vertical
-          // space to fit everything.
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: [
-              Container(
-                height: 100,
-                child:  DrawerHeader(
-                  decoration: const BoxDecoration(
-                    color: Colors.white24,
-                    border: Border(
-                      bottom: BorderSide(
-                        style: BorderStyle.solid,
-                        color: Colors.blueAccent,
-                        width: 2.5,
-                      ),
-                    ),
-                  ),
-                  child: Row(
-                    children: const [
-                      Text('Settings', style: TextStyle(fontSize: 18.5),),
-                      SizedBox(width: 10,),
-                      Icon(Icons.settings),
-                    ],
-                  ),
-                ),
-              ),
-              ListTile(
-                title: const Text('Appearance'),
-                onTap: () {
-                  // Update the state of the app
-                  context.router.push(const AppearanceRoute());
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('About'),
-                onTap: () {
-                  context.router.push(const AboutRoute());
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: CustomDrawer(onDrawerItemOnePressed: (){
+          context.router.push(const AppearanceRoute());
+        },
+          onDrawerItemTwoPressed: (){
+          context.router.push(const AboutRoute());
+          },),
         body: const CounterScreen(),
       );
   }
@@ -92,17 +50,15 @@ class CounterScreen extends StatelessWidget {
         viewModel.increment();
       },
       enableFeedback: !viewModel.maxLimitReached,
-      color: Theme.of(context).buttonTheme.colorScheme!.primary,
+      //color: Theme.of(context).buttonTheme.colorScheme!.primary,
       text: 'Increase ++',
       textColor: AppColors.buttonText,
     );
-    CounterButton resetButton = CounterButton(
+    ResetButton resetButton = ResetButton(
       onPressed: () {
         viewModel.reset();
       },
       enableFeedback: !viewModel.maxLimitReached,
-      color: Theme.of(context).buttonTheme.colorScheme!.onSurface,
-      textColor: Theme.of(context).colorScheme.primary,
       text: 'Reset',
     );
     CounterButton decreaseButton = CounterButton(
@@ -117,7 +73,7 @@ class CounterScreen extends StatelessWidget {
         viewModel.decrement();
       },
       enableFeedback: true,
-      color: Theme.of(context).buttonTheme.colorScheme!.primary,
+      //color: Theme.of(context).buttonTheme.colorScheme!.primary,
       text: 'Decrease --',
       textColor: AppColors.buttonText,
     );
