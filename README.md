@@ -18,4 +18,14 @@ samples, guidance on mobile development, and a full API reference.
 =======
 # InternshipTasks
 repository for posting the tasks done through the internship
+New Flutter Commands used in console: 
+flutter create project_name
+flutter run
+flutter build apk   
+flutter build appbundle   
+flutter build ios
+flutter pub global run devtools
+flutter pub get
+flutter pub upgrade
+dart build_runner build --delete-conflicting-outputs
 >>>>>>> b22d60570eaf320a18b167ccc241e57f6a75b9cf
