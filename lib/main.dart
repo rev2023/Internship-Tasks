@@ -1,16 +1,17 @@
 import 'package:counter_app/provider/counter_provider.dart';
 import 'package:counter_app/provider/theme_provider.dart';
-import 'package:counter_app/routes/app_router.dart';
-import 'package:counter_app/theme/themes.dart';
+import 'package:counter_app/router/app_router.dart';
+import 'package:counter_app/styles/themes.dart';
+import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'provider/about_provider.dart';
-
-
   main(){
-  runApp(
-    MultiProvider(
+    WidgetsFlutterBinding.ensureInitialized();
+    setupDependencies();
+
+    runApp(
+        MultiProvider(
 
       providers: [
         ChangeNotifierProvider<CounterViewModel>(
@@ -19,18 +20,19 @@ import 'provider/about_provider.dart';
           ChangeNotifierProvider<ThemeProvider>(
           create: (context) => ThemeProvider(),
         ),
-        ChangeNotifierProvider<AboutProvider>(
-          create: (context) => AboutProvider(),
-        ),
+        // ChangeNotifierProvider<AboutProvider>(
+        //   create: (context) => AboutProvider(),
+        // ),
 
       ],
-      child: MyApp(),
+      child:  MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
+    MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 
-import 'package:counter_app/utils/app_colors.dart';
+import 'package:counter_app/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 

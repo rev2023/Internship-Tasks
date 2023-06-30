@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:package_info/package_info.dart';
 
-import '../provider/about_provider.dart';
+import '../config/app_config.dart';
+import '../utils/service_locator.dart';
 
 
 @RoutePage()
@@ -15,8 +15,9 @@ class AboutScreen extends StatelessWidget {
 
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final aboutProvider = Provider.of<AboutProvider>(context);
-    final packageInfo = aboutProvider.packageInfo;
+    //final aboutProvider = Provider.of<AboutProvider>(context);
+    final packageInfo = getIt<AppConfig>().packageInfo;
+
 
     return  Scaffold(
 

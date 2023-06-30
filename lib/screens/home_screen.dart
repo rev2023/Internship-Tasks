@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/counter_provider.dart';
-import 'package:counter_app/routes/app_router.gr.dart';
 import 'package:counter_app/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:counter_app/widgets/counter_button.dart';
-import 'package:counter_app/utils/app_colors.dart';
+import 'package:counter_app/styles/app_colors.dart';
 
+import '../router/app_router.gr.dart';
 import '../widgets/reset_button.dart';
 
 @RoutePage()
