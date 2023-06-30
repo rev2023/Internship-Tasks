@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CounterViewModel extends ChangeNotifier{
+class CounterProvider extends ChangeNotifier{
 
   int _count = 0;
   final int _maxLimit = 15;
@@ -11,7 +11,7 @@ class CounterViewModel extends ChangeNotifier{
 
 
   //Constructor
-  CounterViewModel() {
+  CounterProvider() {
     _loadCount();
   }
 

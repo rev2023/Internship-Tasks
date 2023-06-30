@@ -16,23 +16,25 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          title: const Center(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-              child: Text('Counter App'),
-            ),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Center(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+            child: Text('Counter App'),
           ),
         ),
-        drawer: CustomDrawer(onDrawerItemOnePressed: (){
+      ),
+      drawer: CustomDrawer(
+        onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());
         },
-          onDrawerItemTwoPressed: (){
+        onDrawerItemTwoPressed: () {
           context.router.push(const AboutRoute());
-          },),
-        body: const CounterScreen(),
-      );
+        },
+      ),
+      body: const CounterScreen(),
+    );
   }
 }
 
@@ -41,7 +43,7 @@ class CounterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<CounterViewModel>(context);
+    final viewModel = Provider.of<CounterProvider>(context);
     final count = viewModel.count;
 
     // Instances of the counter button
@@ -83,9 +85,20 @@ class CounterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              margin: const EdgeInsets.fromLTRB(300, 0, 0, 0),
+              width: 40,
+              height: 50,
+              child: GestureDetector(
+                  onTap: () {
+                    context.router.push(const FactRoute());
+                  },
+                  child: Image.asset('lib/utils/infobutton.png')),
+            ),
             Text(
               'Number of times button clicked: $count',
-              style: TextStyle(fontSize: 20, color: Theme.of(context).colorScheme.onSurface),
+              style: TextStyle(
+                  fontSize: 20, color: Theme.of(context).colorScheme.onSurface),
             ),
             const SizedBox(height: 40),
             Opacity(
@@ -98,7 +111,8 @@ class CounterScreen extends StatelessWidget {
             decreaseButton,
             const SizedBox(height: 20),
             Visibility(
-              visible: !viewModel.isZero, // Only show the button if count is not equal to 0
+              visible: !viewModel
+                  .isZero, // Only show the button if count is not equal to 0
               child: resetButton,
             ),
           ],

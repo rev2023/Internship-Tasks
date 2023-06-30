@@ -1,4 +1,5 @@
 import 'package:counter_app/provider/counter_provider.dart';
+import 'package:counter_app/provider/fact_provider.dart';
 import 'package:counter_app/provider/theme_provider.dart';
 import 'package:counter_app/router/app_router.dart';
 import 'package:counter_app/styles/themes.dart';
@@ -10,19 +11,20 @@ import 'package:provider/provider.dart';
     WidgetsFlutterBinding.ensureInitialized();
     setupDependencies();
 
+
     runApp(
         MultiProvider(
 
       providers: [
-        ChangeNotifierProvider<CounterViewModel>(
-          create: (context) => CounterViewModel(),
-        ),
+        ChangeNotifierProvider<CounterProvider>(
+          create: (context) => CounterProvider()),
+
           ChangeNotifierProvider<ThemeProvider>(
           create: (context) => ThemeProvider(),
         ),
-        // ChangeNotifierProvider<AboutProvider>(
-        //   create: (context) => AboutProvider(),
-        // ),
+        ChangeNotifierProvider<FactProvider>(
+          create: (context) => FactProvider(),
+        ),
 
       ],
       child:  MyApp(),
