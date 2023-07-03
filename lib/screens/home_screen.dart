@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:counter_app/widgets/counter_button.dart';
 import 'package:counter_app/styles/app_colors.dart';
-
-import '../router/app_router.gr.dart';
-import '../widgets/reset_button.dart';
+import 'package:counter_app/router/app_router.gr.dart';
+import 'package:counter_app/widgets/reset_button.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -91,9 +90,9 @@ class CounterScreen extends StatelessWidget {
               height: 50,
               child: GestureDetector(
                   onTap: () {
-                    context.router.push(const FactRoute());
+                    context.router.push(FactRoute(count: count));
                   },
-                  child: Image.asset('lib/utils/infobutton.png')),
+                  child: Image.asset('lib/utils/info_button.png')),
             ),
             Text(
               'Number of times button clicked: $count',

@@ -13,6 +13,7 @@ import 'package:counter_app/screens/about_screen.dart' as _i1;
 import 'package:counter_app/screens/appearance_screen.dart' as _i2;
 import 'package:counter_app/screens/fact_screen.dart' as _i3;
 import 'package:counter_app/screens/home_screen.dart' as _i4;
+import 'package:flutter/material.dart' as _i6;
 
 abstract class $AppRouter extends _i5.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -32,9 +33,13 @@ abstract class $AppRouter extends _i5.RootStackRouter {
       );
     },
     FactRoute.name: (routeData) {
+      final args = routeData.argsAs<FactRouteArgs>();
       return _i5.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.FactScreen(),
+        child: _i3.FactScreen(
+          key: args.key,
+          count: args.count,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -76,16 +81,40 @@ class AppearanceRoute extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.FactScreen]
-class FactRoute extends _i5.PageRouteInfo<void> {
-  const FactRoute({List<_i5.PageRouteInfo>? children})
-      : super(
+class FactRoute extends _i5.PageRouteInfo<FactRouteArgs> {
+  FactRoute({
+    _i6.Key? key,
+    required int count,
+    List<_i5.PageRouteInfo>? children,
+  }) : super(
           FactRoute.name,
+          args: FactRouteArgs(
+            key: key,
+            count: count,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'FactRoute';
 
-  static const _i5.PageInfo<void> page = _i5.PageInfo<void>(name);
+  static const _i5.PageInfo<FactRouteArgs> page =
+      _i5.PageInfo<FactRouteArgs>(name);
+}
+
+class FactRouteArgs {
+  const FactRouteArgs({
+    this.key,
+    required this.count,
+  });
+
+  final _i6.Key? key;
+
+  final int count;
+
+  @override
+  String toString() {
+    return 'FactRouteArgs{key: $key, count: $count}';
+  }
 }
 
 /// generated route for

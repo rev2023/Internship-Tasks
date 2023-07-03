@@ -1,27 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/fact_provider.dart';
-import 'package:counter_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../config/app_config.dart';
-import '../provider/counter_provider.dart';
-import '../utils/service_locator.dart';
 
 
 @RoutePage()
 class FactScreen extends StatelessWidget {
-  const FactScreen({super.key});
+  const FactScreen({super.key, required this.count});
+
+  final int count;
 
   @override
 
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     final aboutProvider = Provider.of<FactProvider>(context);
-    final viewModel = Provider.of<CounterProvider>(context);
-    final count = viewModel.count;
-
-
 
     return  Scaffold(
 
@@ -40,7 +33,7 @@ class FactScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
+      body: ListView(
         children:  [
           const SizedBox(
             height: 20,
