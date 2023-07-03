@@ -2,11 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/counter_provider.dart';
 import 'package:counter_app/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:counter_app/widgets/counter_button.dart';
 import 'package:counter_app/styles/app_colors.dart';
 import 'package:counter_app/router/app_router.gr.dart';
 import 'package:counter_app/widgets/reset_button.dart';
+import '../widgets/app_bar.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -15,15 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-            child: Text('Counter App'),
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(text: 'Counter App',),
       drawer: CustomDrawer(
         onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());
@@ -44,6 +38,11 @@ class CounterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = Provider.of<CounterProvider>(context);
     final count = viewModel.count;
+    const String assetName = 'lib/assets/info_button.svg';
+    final Widget informationImage = SvgPicture.asset(
+        assetName,
+        semanticsLabel: 'Information Button '
+    );
 
     // Instances of the counter button
     CounterButton increaseButton = CounterButton(
@@ -92,7 +91,7 @@ class CounterScreen extends StatelessWidget {
                   onTap: () {
                     context.router.push(FactRoute(count: count));
                   },
-                  child: Image.asset('lib/utils/info_button.png')),
+                  child: informationImage ),
             ),
             Text(
               'Number of times button clicked: $count',

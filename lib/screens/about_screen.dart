@@ -10,7 +10,6 @@ class AboutScreen extends StatelessWidget {
     const AboutScreen({super.key});
 
   @override
-
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     //final aboutProvider = Provider.of<AboutProvider>(context);
