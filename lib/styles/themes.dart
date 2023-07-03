@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 class Themes {
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
-    appBarTheme: AppBarTheme(color: AppColors.primaryColor),
-    primaryColor: AppColors.primaryColor,
+    primaryColor: AppColors.primaryColor, // Used for appbar
+    // colorScheme: ColorScheme.light(
+    //   primary: AppColors.darkModeText, //Used for text color
+    //   onSurface: AppColors.textColor,
+    // ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(AppColors.enabledButton),)
 
@@ -16,7 +19,6 @@ class Themes {
   );
 
   static final darkTheme = ThemeData(
-    appBarTheme: AppBarTheme(color: AppColors.darkPrimaryColor),
     brightness: Brightness.dark,
     primaryColor: AppColors.darkPrimaryColor, // Used for appbar
     elevatedButtonTheme: ElevatedButtonThemeData(

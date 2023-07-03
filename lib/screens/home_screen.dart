@@ -7,7 +7,6 @@ import 'package:counter_app/widgets/counter_button.dart';
 import 'package:counter_app/styles/app_colors.dart';
 import 'package:counter_app/router/app_router.gr.dart';
 import 'package:counter_app/widgets/reset_button.dart';
-import '../widgets/app_bar.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -16,7 +15,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: 'Counter App',),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Center(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+            child: Text('Counter App'),
+          ),
+        ),
+      ),
       drawer: CustomDrawer(
         onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());
