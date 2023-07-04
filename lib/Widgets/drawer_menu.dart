@@ -16,7 +16,7 @@ class CustomDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          Container(
+          SizedBox(
             height: 100,
             child: DrawerHeader(
               decoration: const BoxDecoration(

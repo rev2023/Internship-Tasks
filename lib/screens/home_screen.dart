@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: 'Counter App',),
+      appBar: const CustomAppBar(text: 'Counter App',),
       drawer: CustomDrawer(
         onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());

@@ -5,49 +5,62 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
-
+import '../styles/theme_mode.dart';
+import '../widgets/app_bar.dart';
 
 @RoutePage()
-class AppearanceScreen extends StatelessWidget {
-  const AppearanceScreen({super.key});
+class AppearanceScreen extends StatefulWidget {
+  const AppearanceScreen({Key? key}) : super(key: key);
+
   @override
+  State<AppearanceScreen> createState() => _AppearanceScreenState();
+}
 
+class _AppearanceScreenState extends State<AppearanceScreen> {
+  AppTheme? dropdownValue;
+  @override
+  void initState() {
+    super.initState();
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    List<AppTheme> list = AppTheme.values.toList();
+    dropdownValue = themeProvider.theme;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    //final themeManager = Provider.of<ThemeManager>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    List<AppTheme> list = AppTheme.values.toList();
 
-    return  Scaffold(
-
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                AutoRouter.of(context).pop();
+    return Scaffold(
+      appBar: const CustomAppBar(
+        text: 'Counter App',
+      ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          ListTile(
+            title: const Text('Select theme mode'),
+            trailing: DropdownButton<AppTheme>(
+              value: dropdownValue,
+              onChanged: (AppTheme? value) {
+                setState(() {
+                  themeProvider.selectTheme(value!);
+                  themeProvider.theme = value;
+                  dropdownValue = value;
+                });
               },
-            ),
-            backgroundColor: Theme.of(context).primaryColor,
-            title: const Center(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-                child: Text('Counter App'),
-              ),
+              items: list.map<DropdownMenuItem<AppTheme>>((AppTheme value) {
+                return DropdownMenuItem<AppTheme>(
+                  value: value,
+                  child: Text(getIt<AppConfig>().toName(value)),
+                );
+              }).toList(),
             ),
           ),
-          body: Column(
-            children:  [
-              const SizedBox(
-                height: 20,
-              ),
-              ListTile(
-                title: const Text('Switch on dark mode'),
-                trailing: Switch(value: themeProvider.darkThemeOn,
-                  onChanged: (value) {
-                   themeProvider.toggleTheme();
-
-                },),
-              ),
-            ],
-          ),
+        ],
+      ),
     );
   }
 }

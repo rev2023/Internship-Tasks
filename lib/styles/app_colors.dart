@@ -12,5 +12,17 @@ class AppColors {
   static Color darkModeText = Colors.white;
   static Color darkModeReset = Colors.white;
 
+  // Leaf Green theme
+
+ static Color greenBackground = const Color(0xFF8BC34A);
+  static Color greenModeText = Colors.white;
+  static Color greenDrawer = Colors.white;
+
+// Firered theme
+  static Color redBackground = const Color.fromARGB(255, 203, 12, 9);
+  static Color redTone = Colors.redAccent;
+
+
+
 
 }
