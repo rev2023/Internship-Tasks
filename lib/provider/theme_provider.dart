@@ -1,7 +1,7 @@
 import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import '../config/app_config.dart';
-import '../styles/theme_mode.dart';
+import '../styles/app_theme.dart';
 import '../styles/themes.dart';
 
 class ThemeProvider with ChangeNotifier {

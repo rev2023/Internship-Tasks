@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../styles/theme_mode.dart';
+import '../styles/app_theme.dart';
 import '../styles/themes.dart';
 
 // contains current theme and build version configuration

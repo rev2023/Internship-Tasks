@@ -3,42 +3,24 @@ import 'package:counter_app/provider/fact_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
+import '../widgets/app_bar.dart';
 
 @RoutePage()
 class FactScreen extends StatelessWidget {
-  const FactScreen({super.key, required this.count});
+  const FactScreen({Key? key, required this.count}) : super(key: key);
 
   final int count;
 
   @override
-
   Widget build(BuildContext context) {
     final aboutProvider = Provider.of<FactProvider>(context);
 
-    return  Scaffold(
-
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            AutoRouter.of(context).pop();
-          },
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-            child: Text('Counter App'),
-          ),
-        ),
-      ),
+    return Scaffold(
+      appBar: const CustomAppBar(text: 'Counter App'),
       body: ListView(
-        children:  [
-          const SizedBox(
-            height: 20,
-          ),
-           ListTile(
+        children: [
+          const SizedBox(height: 20),
+          ListTile(
             title: Text(aboutProvider.returnFact(count, 0)),
           ),
           ListTile(

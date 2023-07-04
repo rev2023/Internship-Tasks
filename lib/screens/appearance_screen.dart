@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../config/app_config.dart';
-import '../styles/theme_mode.dart';
+import '../styles/app_theme.dart';
 import '../widgets/app_bar.dart';
 
 @RoutePage()

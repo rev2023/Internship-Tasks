@@ -9,8 +9,8 @@ class Themes {
     primaryColor: AppColors.primaryColor,
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-      backgroundColor:
-          MaterialStateProperty.all<Color>(AppColors.enabledButton),
+      // backgroundColor:
+      //     MaterialStateProperty.all<Color>(AppColors.enabledButton),
     )),
   );
 
