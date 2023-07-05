@@ -1,5 +1,6 @@
 import 'package:counter_app/provider/counter_provider.dart';
 import 'package:counter_app/provider/fact_provider.dart';
+import 'package:counter_app/provider/tab_provider.dart';
 import 'package:counter_app/provider/theme_provider.dart';
 import 'package:counter_app/router/app_router.dart';
 import 'package:counter_app/utils/service_locator.dart';
@@ -24,6 +25,8 @@ import 'package:provider/provider.dart';
         ChangeNotifierProvider<FactProvider>(
           create: (context) => FactProvider(),
         ),
+        ChangeNotifierProvider<TabProvider>(
+            create: (context) => TabProvider()),
 
       ],
       child: const MyApp(),
