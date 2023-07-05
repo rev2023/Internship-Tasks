@@ -1,8 +1,8 @@
 import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter/material.dart';
-import '../config/app_config.dart';
-import '../styles/app_theme.dart';
-import '../styles/themes.dart';
+import 'package:counter_app/config/app_config.dart';
+import 'package:counter_app/styles/app_theme.dart';
+import 'package:counter_app/styles/themes.dart';
 
 class ThemeProvider with ChangeNotifier {
   AppTheme? _theme = getIt<AppConfig>().currentTheme;

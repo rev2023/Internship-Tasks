@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-import 'counter_provider.dart';
+import 'package:counter_app/provider/counter_provider.dart';
 
 class FactProvider with ChangeNotifier {
   CounterProvider counter = CounterProvider();

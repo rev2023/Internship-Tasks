@@ -1,11 +1,8 @@
-import 'package:counter_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../styles/app_theme.dart';
-import '../styles/themes.dart';
+import 'package:counter_app/styles/app_theme.dart';
+import 'package:counter_app/styles/themes.dart';
 
 // contains current theme and build version configuration
 // App config singleton is registered in service_locator.dart

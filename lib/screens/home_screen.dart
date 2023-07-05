@@ -8,7 +8,7 @@ import 'package:counter_app/widgets/counter_button.dart';
 import 'package:counter_app/styles/app_colors.dart';
 import 'package:counter_app/router/app_router.gr.dart';
 import 'package:counter_app/widgets/reset_button.dart';
-import '../widgets/app_bar.dart';
+import 'package:counter_app/widgets/app_bar.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {

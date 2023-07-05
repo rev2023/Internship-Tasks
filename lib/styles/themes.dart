@@ -7,10 +7,8 @@ class Themes {
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(color: AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
-    elevatedButtonTheme: ElevatedButtonThemeData(
+    elevatedButtonTheme: const ElevatedButtonThemeData(
         style: ButtonStyle(
-      // backgroundColor:
-      //     MaterialStateProperty.all<Color>(AppColors.enabledButton),
     )),
   );
 

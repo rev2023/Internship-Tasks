@@ -2,8 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/fact_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../widgets/app_bar.dart';
+import 'package:counter_app/widgets/app_bar.dart';
 
 @RoutePage()
 class FactScreen extends StatelessWidget {

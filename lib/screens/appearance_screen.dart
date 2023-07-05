@@ -3,10 +3,9 @@ import 'package:counter_app/provider/theme_provider.dart';
 import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../config/app_config.dart';
-import '../styles/app_theme.dart';
-import '../widgets/app_bar.dart';
+import 'package:counter_app/config/app_config.dart';
+import 'package:counter_app/styles/app_theme.dart';
+import 'package:counter_app/widgets/app_bar.dart';
 
 @RoutePage()
 class AppearanceScreen extends StatefulWidget {
