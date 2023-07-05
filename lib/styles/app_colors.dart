@@ -22,7 +22,9 @@ class AppColors {
   static Color redBackground = const Color.fromARGB(255, 203, 12, 9);
   static Color redTone = Colors.redAccent;
 
-
+// Cards Tab
+static Color cardColor = Colors.amber;
+static Color nonActiveDotColor = Colors.grey;
 
 
 }

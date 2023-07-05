@@ -9,6 +9,9 @@ import 'package:counter_app/styles/app_colors.dart';
 import 'package:counter_app/router/app_router.gr.dart';
 import 'package:counter_app/widgets/reset_button.dart';
 import 'package:counter_app/widgets/app_bar.dart';
+import '../provider/tab_provider.dart';
+import '../widgets/bottom_bar.dart';
+import 'corousel_screen.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -16,6 +19,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> screenOptions = [const CounterScreen(), CarouselScreen()];
+    TabProvider tabProvider = Provider.of<TabProvider>(context, listen: true);
+
     return Scaffold(
       appBar: const CustomAppBar(text: 'Counter App',),
       drawer: CustomDrawer(
@@ -26,7 +32,8 @@ class HomeScreen extends StatelessWidget {
           context.router.push(const AboutRoute());
         },
       ),
-      body: const CounterScreen(),
+      body: screenOptions[tabProvider.currentTab],
+      bottomNavigationBar: BottomBar(),
     );
   }
 }
