@@ -39,17 +39,6 @@ class Themes {
     canvasColor: AppColors.greenBackground,
     appBarTheme: AppBarTheme(color: AppColors.greenBackground),
     drawerTheme: DrawerThemeData(backgroundColor: AppColors.greenBackground),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        color: Colors.white,
-      ),
-      bodySmall: TextStyle(
-        color: Colors.white,
-      ),
-      bodyMedium: TextStyle(
-        color: Colors.white,
-      ),
-    ),
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.greenBackground,
     elevatedButtonTheme: ElevatedButtonThemeData(

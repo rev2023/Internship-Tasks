@@ -53,7 +53,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
               items: list.map<DropdownMenuItem<AppTheme>>((AppTheme value) {
                 return DropdownMenuItem<AppTheme>(
                   value: value,
-                  child: Text(getIt<AppConfig>().toName(value)),
+                  child: Text(value.toName()!),
                 );
               }).toList(),
             ),

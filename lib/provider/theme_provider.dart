@@ -5,15 +5,15 @@ import 'package:counter_app/styles/app_theme.dart';
 import 'package:counter_app/styles/themes.dart';
 
 class ThemeProvider with ChangeNotifier {
-  AppTheme? _theme = getIt<AppConfig>().currentTheme;
+  AppTheme _theme = getIt<AppConfig>().currentTheme;
   ThemeData _themeData = Themes.lightTheme;
 
   AppTheme? get theme => _theme;
 
   set theme(AppTheme? value) {
-    _theme = value;
-    getIt<AppConfig>().themeName = getIt<AppConfig>().toName(_theme);
-    getIt<AppConfig>().saveThemeData(getIt<AppConfig>().toName(_theme));
+    _theme = value!;
+    getIt<AppConfig>().currentTheme = _theme;
+    getIt<AppConfig>().saveThemeData(_theme.toName()!);
     notifyListeners();
   }
 
