@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> screenOptions = [const CounterScreen(), CarouselScreen()];
+    List<Widget> screenOptions = [const CounterScreen(), const CarouselScreen()];
     TabProvider tabProvider = Provider.of<TabProvider>(context, listen: true);
 
     return Scaffold(
