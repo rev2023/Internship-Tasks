@@ -1,9 +1,9 @@
-import 'package:counter_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:counter_app/styles/app_theme.dart';
 import 'package:counter_app/styles/themes.dart';
+import 'package:counter_app/utils/keys.dart';
 
 // contains current theme and build version configuration
 // App config singleton is registered in service_locator.dart
@@ -22,7 +22,7 @@ class AppConfig {
 
   Future<void> loadCurrentTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    String themeName = prefs.getString('theme mode') ?? 'Light';
+    String themeName = prefs.getString(Keys.keyForTheme) ?? 'Light';
     currentTheme = currentTheme.fromName(themeName)!;
   }
 
@@ -32,6 +32,6 @@ class AppConfig {
 
   Future<void> saveThemeData(String theme) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('theme mode', currentTheme.toName()!);
+    await prefs.setString(Keys.keyForTheme, currentTheme.toName()!);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:counter_app/utils/keys.dart';
 
 class CounterProvider extends ChangeNotifier{
 
@@ -19,14 +20,14 @@ class CounterProvider extends ChangeNotifier{
   // Called in the constructor
   void _loadCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    _count = prefs.getInt('count') ?? 0;
+    _count = prefs.getInt(Keys.keyForCount) ?? 0;
     notifyListeners();
   }
 
   //Method for reading current count into shared preferences
   void _saveCount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('count', _count);
+    await prefs.setInt(Keys.keyForCount, _count);
   }
 
   // adjusting the count variables
