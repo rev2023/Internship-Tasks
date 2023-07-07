@@ -9,13 +9,13 @@ import 'package:counter_app/styles/app_colors.dart';
 import 'package:counter_app/router/app_router.gr.dart';
 import 'package:counter_app/widgets/reset_button.dart';
 import 'package:counter_app/widgets/app_bar.dart';
-import '../provider/tab_provider.dart';
-import '../widgets/bottom_bar.dart';
-import 'corousel_screen.dart';
+import 'package:counter_app/provider/tab_provider.dart';
+import 'package:counter_app/widgets/bottom_bar.dart';
+import 'package:counter_app/screens/carousel_screen.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     TabProvider tabProvider = Provider.of<TabProvider>(context, listen: true);
 
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Counter App',),
+      appBar: const CustomAppBar(text: 'Counter App'),
       drawer: CustomDrawer(
         onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());
@@ -39,16 +39,15 @@ class HomeScreen extends StatelessWidget {
 }
 
 class CounterScreen extends StatelessWidget {
-  const CounterScreen({super.key});
+  const CounterScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<CounterProvider>(context);
-    final count = viewModel.count;
+    final viewModel = Provider.of<CounterProvider>(context, listen: false);
     const String assetName = 'lib/assets/info_button.svg';
     final Widget informationImage = SvgPicture.asset(
-        assetName,
-        semanticsLabel: 'Information Button '
+      assetName,
+      semanticsLabel: 'Information Button',
     );
 
     // Instances of the counter button
@@ -87,40 +86,48 @@ class CounterScreen extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(300, 0, 0, 0),
-              width: 40,
-              height: 50,
-              child: GestureDetector(
-                  onTap: () {
-                    context.router.push(FactRoute(count: count));
-                  },
-                  child: informationImage ),
-            ),
-            Text(
-              'Number of times button clicked: $count',
-              style: TextStyle(
-                  fontSize: 20, color: Theme.of(context).colorScheme.onSurface),
-            ),
-            const SizedBox(height: 40),
-            Opacity(
-              opacity: viewModel.maxLimitReached ? 0.3 : 1,
-              child: increaseButton,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            decreaseButton,
-            const SizedBox(height: 20),
-            Visibility(
-              visible: !viewModel
-                  .isZero, // Only show the button if count is not equal to 0
-              child: resetButton,
-            ),
-          ],
+        child: Consumer<CounterProvider>(
+          builder: (context, counter, child) {
+            int count = counter.count;
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(300, 0, 0, 0),
+                  width: 40,
+                  height: 50,
+                  child: GestureDetector(
+                    onTap: () {
+                      context.router.push(FactRoute(count: count));
+                    },
+                    child: informationImage,
+                  ),
+                ),
+                Text(
+                  'Number of times button clicked: $count',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 40),
+                Opacity(
+                  opacity: viewModel.maxLimitReached ? 0.3 : 1,
+                  child: increaseButton,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                decreaseButton,
+                const SizedBox(height: 20),
+                Visibility(
+                  visible: !viewModel.isZero,
+                  // Only show the button if count is not equal to 0
+                  child: resetButton,
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
