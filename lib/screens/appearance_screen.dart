@@ -1,9 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/theme_provider.dart';
-import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:counter_app/config/app_config.dart';
 import 'package:counter_app/styles/app_theme.dart';
 import 'package:counter_app/widgets/app_bar.dart';
 
@@ -53,7 +51,7 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
               items: list.map<DropdownMenuItem<AppTheme>>((AppTheme value) {
                 return DropdownMenuItem<AppTheme>(
                   value: value,
-                  child: Text(value.toName()!),
+                  child: Text(value.toName()),
                 );
               }).toList(),
             ),

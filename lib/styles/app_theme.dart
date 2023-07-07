@@ -9,18 +9,18 @@ enum AppTheme {
 extension SelectedTheme on AppTheme {
   String get name => describeEnum(this);
 
-  String? toName() {
-    switch (name) {
-      case 'light':
+  String toName() {
+    switch (this) {
+      case AppTheme.light:
         return 'Light';
-      case 'dark':
+      case AppTheme.dark:
         return 'Dark';
-      case 'fireRed':
+      case AppTheme.fireRed:
         return 'Fire red';
-      case 'leafGreen':
+      case AppTheme.leafGreen:
         return 'Leaf green';
       default:
-        return '';
+        throw Exception('Invalid theme from toName()');
     }
   }
 
