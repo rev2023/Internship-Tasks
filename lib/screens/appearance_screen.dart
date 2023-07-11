@@ -44,11 +44,10 @@ class _AppearanceScreenState extends State<AppearanceScreen> {
             trailing: DropdownButton<AppTheme>(
               value: dropdownValue,
               onChanged: (AppTheme? value) {
-                setState(() {
                   themeProvider.selectTheme(value!);
                   themeProvider.theme = value;
                   dropdownValue = value;
-                });
+
               },
               items: list.map<DropdownMenuItem<AppTheme>>((AppTheme value) {
                 String getOption(AppTheme name) {

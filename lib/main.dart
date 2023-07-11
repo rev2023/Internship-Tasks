@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
         Locale('es'),
         // Additional locales if needed
       ],
-      locale: Locale(preferencesProvider.currentLanguage),
+      locale: Locale(preferencesProvider.currentLocale),
       theme: themeProvider.themeData,
     );
   }

@@ -4,10 +4,12 @@ import 'package:counter_app/config/app_config.dart';
 
 
 class PreferencesProvider with ChangeNotifier {
-  String currentLanguage = getIt<AppConfig>().locale == 'es' ? 'English' : 'Spanish';
+  String currentLocale = getIt<AppConfig>().locale;
+  String currentLanguage= getIt<AppConfig>().locale == 'es' ? 'Spanish' : 'English';
   void onTap(String value) {
-    currentLanguage  =  value == 'English' ? 'en' : 'es';
-    getIt<AppConfig>().locale = currentLanguage;
+    currentLocale  =  value == 'English' ? 'en' : 'es';
+    currentLanguage = currentLocale == 'en' ? 'English' : 'Spanish';
+    getIt<AppConfig>().locale = currentLocale;
     getIt<AppConfig>().saveLocale();
     notifyListeners();
   }

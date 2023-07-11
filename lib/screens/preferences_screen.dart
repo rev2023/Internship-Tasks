@@ -32,6 +32,7 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
       ),
       body: Consumer<PreferencesProvider>(
         builder: (context, preference, child) {
+          dropdownValue = preference.currentLanguage;
           return Column(
             children: [
               const SizedBox(
@@ -42,11 +43,8 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                 trailing: DropdownButton<String>(
                   value: dropdownValue,
                   onChanged: (String? value) {
-                    setState(() {
                       dropdownValue = value;
                       preference.onTap(value!);
-
-                    });
                   },
                   items: languageList.map<DropdownMenuItem<String>>(
                         (String value) {

@@ -11,8 +11,14 @@ class AppConfig {
 
   AppTheme currentTheme = AppTheme.light;
   ThemeData _theme = Themes.lightTheme;
-  late String locale = 'en';
+  late String _locale = 'en';
   late PackageInfo _packageInfo;
+  String get locale => _locale;
+  PackageInfo get packageInfo => _packageInfo;
+
+  set locale(String locale ){
+    _locale = locale;
+  }
 
   AppConfig() {
     saveLocale();
@@ -21,7 +27,6 @@ class AppConfig {
     loadLocale();
   }
 
-  PackageInfo get packageInfo => _packageInfo;
 
   Future<void> loadCurrentTheme() async {
     final prefs = await SharedPreferences.getInstance();
