@@ -12,6 +12,8 @@ import 'package:counter_app/widgets/app_bar.dart';
 import 'package:counter_app/provider/tab_provider.dart';
 import 'package:counter_app/widgets/bottom_bar.dart';
 import 'package:counter_app/screens/carousel_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -23,13 +25,16 @@ class HomeScreen extends StatelessWidget {
     TabProvider tabProvider = Provider.of<TabProvider>(context, listen: true);
 
     return Scaffold(
-      appBar: const CustomAppBar(text: 'Counter App'),
+      appBar: CustomAppBar(text: AppLocalizations.of(context)!.appbar),
       drawer: CustomDrawer(
         onDrawerItemOnePressed: () {
           context.router.push(const AppearanceRoute());
         },
         onDrawerItemTwoPressed: () {
           context.router.push(const AboutRoute());
+        },
+        onDrawerItemThreePressed: () {
+          context.router.push(const PreferencesRoute());
         },
       ),
       body: screenOptions[tabProvider.currentTab],
@@ -57,7 +62,7 @@ class CounterScreen extends StatelessWidget {
       },
       enableFeedback: !viewModel.maxLimitReached,
       //color: Theme.of(context).buttonTheme.colorScheme!.primary,
-      text: 'Increase ++',
+      text: AppLocalizations.of(context)!.increase,
       textColor: AppColors.buttonText,
     );
     ResetButton resetButton = ResetButton(
@@ -65,14 +70,14 @@ class CounterScreen extends StatelessWidget {
         viewModel.reset();
       },
       enableFeedback: !viewModel.maxLimitReached,
-      text: 'Reset',
+      text: AppLocalizations.of(context)!.reset,
     );
     CounterButton decreaseButton = CounterButton(
       onPressed: () {
         if (viewModel.isZero == true) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Error: Cannot decrement below 0'),
+             SnackBar(
+              content: Text(AppLocalizations.of(context)!.error),
             ),
           );
         }
@@ -80,7 +85,7 @@ class CounterScreen extends StatelessWidget {
       },
       enableFeedback: true,
       //color: Theme.of(context).buttonTheme.colorScheme!.primary,
-      text: 'Decrease --',
+      text: AppLocalizations.of(context)!.decrease,
       textColor: AppColors.buttonText,
     );
 
@@ -104,7 +109,7 @@ class CounterScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Number of times button clicked: $count',
+                  AppLocalizations.of(context)!.count(count),
                   style: TextStyle(
                     fontSize: 20,
                     color: Theme.of(context).colorScheme.onSurface,

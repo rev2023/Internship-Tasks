@@ -2,8 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:counter_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../config/app_config.dart';
-import '../utils/service_locator.dart';
+import 'package:counter_app/config/app_config.dart';
+import 'package:counter_app/utils/service_locator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:counter_app/widgets/app_bar.dart';
+
 
 @RoutePage()
 class AboutScreen extends StatelessWidget {
@@ -18,21 +21,11 @@ class AboutScreen extends StatelessWidget {
 
     return  Scaffold(
 
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            AutoRouter.of(context).pop();
-          },
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
-            child: Text('Counter App'),
-          ),
-        ),
+      appBar: CustomAppBar(
+        text: AppLocalizations.of(context)!.appbar,
       ),
+
+
       body: Column(
         children:  [
           const SizedBox(

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class CustomDrawer extends StatelessWidget {
   final VoidCallback onDrawerItemOnePressed;
   final VoidCallback onDrawerItemTwoPressed;
+  final VoidCallback onDrawerItemThreePressed;
 
   const CustomDrawer({
     Key? key,
     required this.onDrawerItemOnePressed,
     required this.onDrawerItemTwoPressed,
+    required this.onDrawerItemThreePressed,
+
   }) : super(key: key);
 
   @override
@@ -30,27 +35,33 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               child: Row(
-                children: const [
+                children:  [
                   Text(
-                    'Settings',
-                    style: TextStyle(fontSize: 18.5),
+                      AppLocalizations.of(context)!.settings,
+                    style: const TextStyle(fontSize: 18.5),
                   ),
-                  SizedBox(width: 10),
-                  Icon(Icons.settings),
+                  const SizedBox(width: 10),
+                  const Icon(Icons.settings),
                 ],
               ),
             ),
           ),
           ListTile(
-            title: const Text('Appearance'),
+            title: Text(AppLocalizations.of(context)!.appearance),
             onTap: () {
               onDrawerItemOnePressed();
             },
           ),
           ListTile(
-            title: const Text('About'),
+            title: Text(AppLocalizations.of(context)!.about),
             onTap: () {
               onDrawerItemTwoPressed();
+            },
+          ),
+          ListTile(
+            title: Text(AppLocalizations.of(context)!.preferencesOption),
+            onTap: () {
+              onDrawerItemThreePressed();
             },
           ),
         ],

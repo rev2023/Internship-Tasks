@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../provider/tab_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:counter_app/provider/tab_provider.dart';
 
 class BottomBar extends StatelessWidget {
   int indexPressed = 0;
@@ -14,14 +14,15 @@ class BottomBar extends StatelessWidget {
       currentIndex: indexPressed,
       onTap: tabProvider.onTap,
       elevation: 50,
-      items: const <BottomNavigationBarItem>[
+      items:  <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: 'Home',
+          label: AppLocalizations.of(context)!.home,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.credit_card_sharp),
-          label: 'Cards',
+            label: AppLocalizations.of(context)!.cards,
+
         ),
       ],
     );
