@@ -6,6 +6,8 @@ import 'package:counter_app/config/app_config.dart';
 import 'package:counter_app/utils/service_locator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:counter_app/widgets/app_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 
 @RoutePage()
@@ -15,7 +17,6 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    //final aboutProvider = Provider.of<AboutProvider>(context);
     final packageInfo = getIt<AppConfig>().packageInfo;
 
 
@@ -32,7 +33,7 @@ class AboutScreen extends StatelessWidget {
             height: 20,
           ),
           ListTile(
-            title: Text('Version: ${packageInfo?.version ?? ''}'),
+            title: Text(AppLocalizations.of(context)!.version + ' ${packageInfo?.version ?? ''}'),
             // trailing: Switch(value: themeProvider.isDarkMode,
             //   onChanged: (value) {
             //     themeProvider.toggleTheme();
@@ -40,7 +41,7 @@ class AboutScreen extends StatelessWidget {
             //   },),
           ),
           ListTile(
-            title: Text('Build number: ${packageInfo?.buildNumber ?? ''}'),
+            title: Text(AppLocalizations.of(context)!.buildNumber + ' ${packageInfo?.buildNumber ?? ''}'),
             // trailing: Switch(value: themeProvider.isDarkMode,
             //   onChanged: (value) {
             //     themeProvider.toggleTheme();

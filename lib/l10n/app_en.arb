@@ -24,6 +24,8 @@
   "firered": "Fire Red",
   "leafgreen": "Leaf Green",
   "preferences": "Select preferred language",
+  "version" : "Version: " ,
+  "buildNumber" : "Build Number: " ,
   "preferencesOption": "Preferences",
 
 

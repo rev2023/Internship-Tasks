@@ -23,6 +23,8 @@
     "dark": "Oscuro",
     "firered": "Rojo Fuego",
     "leafgreen": "Verde Hoja",
+    "version" : "Versión: " ,
+    "buildNumber" : "Número de compilación: " ,
     "preferences": "Seleccionar idioma preferido",
     "preferencesOption": "Preferencias",
 
